@@ -1,0 +1,260 @@
+.valentine-bg {
+    background-color: pink;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-content {
+    padding: 2rem;
+}
+
+.title {
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 2rem;
+}
+
+.video-container {
+    margin: 2rem auto;
+}
+
+.video-container video {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.buttons-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.btn.custom-btn {
+    padding: 10px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 25px;
+    background-color: #fff;
+    border: 2px solid #ff69b4;
+    color: #ff69b4;
+    margin: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn.custom-btn:hover {
+    background-color: #ff69b4;
+    color: #fff;
+}
+
+.yes-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.no-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.yes-btn:hover {
+    background-color: #45a049;
+}
+
+.no-btn:hover {
+    background-color: #da190b;
+}
+
+.subtitle {
+    color: #333;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 0 #fff;
+    margin-bottom: 20px;
+    font-family: 'Arial Rounded MT Bold', sans-serif;
+}
+
+.schedule-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(255, 105, 180, 0.2);
+    border: 3px solid black;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.form-control {
+    font-size: 1.3rem;
+    padding: 15px 20px;
+    border: 3px solid black;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+    background-color: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color:  black;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Calendar and time picker icon styling */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    padding: 5px;
+    filter: invert(73%) sepia(83%) saturate(4129%) hue-rotate(299deg) brightness(95%) contrast(96%);
+}
+
+/* Add these new styles */
+.img-fluid {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    border-radius: 15px;
+}
+
+.img-fluid:hover {
+    transform: scale(1.02);
+}
+
+.row {
+    margin-top: 2rem;
+}
+
+.col-md-6 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+.form-check {
+    margin-top: 10px;
+}
+
+.form-check-input {
+    cursor: pointer;
+}
+
+.form-check-label {
+    font-size: 1.1rem;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.restaurant-option {
+    transition: all 0.3s ease;
+}
+
+.restaurant-option:hover img {
+    transform: scale(1.02);
+}
+
+.selected {
+    position: relative;
+}
+
+
+/* Hearts background styling */
+.hearts-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23ff69b4" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat;
+    opacity: 0;
+    animation: hearts-fall 6s linear infinite, hearts-shake 3s ease-in-out infinite;
+}
+
+/* Gold glitter */
+.glitter {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle, #ffd700 20%, transparent 70%);
+    opacity: 0;
+    animation: glitter-fall 4s linear infinite;
+}
+
+@keyframes hearts-fall {
+    0% {
+        opacity: 0;
+        top: -10%;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0;
+        top: 100%;
+    }
+}
+
+@keyframes hearts-shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(80px);
+    }
+}
+
+@keyframes glitter-fall {
+    0% {
+        opacity: 0;
+        top: -10%;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        top: 100%;
+    }
+}
+
+.main-content {
+    position: relative;
+    z-index: 1;
+}
+
+

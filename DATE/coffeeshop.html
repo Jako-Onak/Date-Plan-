@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop Options</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .restaurant-option {
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .selected img {
+            border: 4px solid #ff69b4;
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+        }
+       
+        .activity-option {
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+
+        .selected img {
+            border: 4px solid #ff69b4;
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+        }
+
+        /* Hearts background styling */
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23ff69b4" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat;
+            opacity: 0;
+            animation: hearts-fall 6s linear infinite, hearts-shake 3s ease-in-out infinite;
+        }
+
+        /* Gold glitter */
+        .glitter {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, #ffd700 20%, transparent 70%);
+            opacity: 0;
+            animation: glitter-fall 4s linear infinite;
+        }
+
+        @keyframes hearts-fall {
+            0% {
+                opacity: 0;
+                top: -10%;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                opacity: 0;
+                top: 100%;
+            }
+        }
+
+        @keyframes hearts-shake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(80px);
+            }
+        }
+
+        @keyframes glitter-fall {
+            0% {
+                opacity: 0;
+                top: -10%;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                top: 100%;
+            }
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body class="valentine-bg">
+    <!-- Hearts background container -->
+    <div class="hearts-bg" id="hearts-container"></div>
+    <div class="container text-center main-content">
+        <h1 class="title">COFFEE SHOP TO CHOOSE:</h1>
+        
+        <div class="row mt-4">
+            <div class="col-md-4 mb-4">
+                <div class="restaurant-option">
+                    <h2 class="subtitle">STAR BUCKS</h2>
+                    <img src="./coffeedateimages/starbucks.jpg" alt="Starbucks" class="img-fluid mb-3">
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="restaurant-option">
+                    <h2 class="subtitle">Bo's Coffee</h2>
+                    <img src="./coffeedateimages/boscoffes.jpg" alt="Bo's Coffee" class="img-fluid mb-3">
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="restaurant-option">
+                    <h2 class="subtitle">Habitual Coffee</h2>
+                    <img src="./coffeedateimages/habitual-coffee.jpg" alt="Habitual Coffee" class="img-fluid mb-3">
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6 mb-4">
+                <div class="restaurant-option">
+                    <h2 class="subtitle">Coffee Project</h2>
+                    <img src="./coffeedateimages/coffeeproject.jpg" alt="Coffee Project" class="img-fluid mb-3">
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div class="restaurant-option">
+                    <h2 class="subtitle">Yardstick Coffee</h2>
+                    <img src="./coffeedateimages/yardstick.jpg" alt="Yardstick Coffee" class="img-fluid mb-3">
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4 buttons-container">
+            <a href="wheretoeat.html" class="btn custom-btn">BACK</a>
+            <a href="doafter.html" onclick="sessionStorage.setItem('previousPage', 'coffeeshop.html')" class="btn custom-btn">NEXT</a>
+        </div>
+    </div>
+
+       
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Enhanced click handler for restaurant options
+        document.querySelectorAll('.restaurant-option').forEach(option => {
+            option.addEventListener('click', () => {
+                // Remove selection from all other options
+                document.querySelectorAll('.restaurant-option').forEach(otherOption => {
+                    if (otherOption !== option) {
+                        otherOption.classList.remove('selected');
+                    }
+                });
+
+                // Toggle current option and save selection
+                option.classList.toggle('selected');
+                if (option.classList.contains('selected')) {
+                    const coffeeshopName = option.querySelector('.subtitle').textContent;
+                    sessionStorage.setItem('restaurantChoice', coffeeshopName);
+                }
+            });
+        });
+    </script>
+    <script>
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            const windowWidth = window.innerWidth;
+
+            // Create hearts
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.left = Math.random() * windowWidth + 'px';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(heart);
+            }
+
+            // Create gold glitter
+            for (let i = 0; i < 30; i++) {
+                const glitter = document.createElement('div');
+                glitter.className = 'glitter';
+                glitter.style.left = Math.random() * windowWidth + 'px';
+                glitter.style.animationDelay = Math.random() * 4 + 's';
+                container.appendChild(glitter);
+            }
+        }
+
+        // Initialize hearts and glitter
+        createHearts();
+
+        // Recreate hearts when window is resized
+        window.addEventListener('resize', () => {
+            const container = document.getElementById('hearts-container');
+            container.innerHTML = '';
+            createHearts();
+        });
+    </script>
+</body>
+</html>
